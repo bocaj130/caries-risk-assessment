@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<style>
+			@font-face {
+  			font-family: Frutiger;
+  			src: url(Frutiger_LT_Std_55_Roman_Regular.otf);
+  			font-weight: normal;
+			}
+			@font-face {
+  			font-family: Frutiger;
+  			src: url(FrutigerLTStd-Bold.otf);
+  			font-weight: bold;
+			}
+			body {
+				font-family: Frutiger, Arial;
+				background-color: #e8edee;
+				padding: 0;
+				margin: 0;
+				color: #231f20;
+			}
+			#header {
+				width: 100%;
+				font-size: 30pt;
+				background-color: #005eb8;
+				color: #fff;
+				margin: 0;
+				text-align: center;
+				padding: 10px;
+				box-sizing: border-box;
+				top: 0;
+				left: 0;
+			}
+			#content {
+				width: 100%;
+				padding: 0 10%;
+				box-sizing: border-box;
+			}
+			p.question {
+				font-size: 17pt;
+				color: #231f20;
+				text-align: center;
+			}
+			button.risk {
+				width: 100%;
+				margin: 5% 0 5% 0;
+				padding: 10px;
+				font-size: 15pt;
+				border-radius: 15px;
+				border: none;
+				font-family: Frutiger;
+				transition: 0.2s;
+				transition-property: background-color;
+				outline: 0;
+				box-shadow: 0 5px #425563;
+				cursor: pointer;
+				position: relative;
+			}
+			button:hover {
+				top: 5px;
+				box-shadow: none;
+			}
+			#low {
+				background-color: #aed87f;
+				display: none;
+			}
+			#med {
+				background-color: #ffd581;
+				display: none;
+			}
+			#hi {
+				background-color: #ef8c7f;
+				display: none;
+			}
+			#start {
+				background-color: #6c9fd5;
+				color: #fff;
+			}
+			#low:active {
+				background-color: #78be20;
+			}
+			#med:active {
+				background-color: #ffb81c;
+			}
+			#hi:active {
+				background-color: #e44024;
+			}
+			a {
+				color: #005eb8;
+				text-decoration: underline;
+			}
+			a:hover {
+				text-decoration: none;
+				cursor: pointer;
+			}
+			#back {
+				float: left;
+				display: none;
+			}
+			#restart {
+				float: right;
+				display: none;
+			}
+			#riskResult {
+				font-size: 23pt;
+				color: #231f20;
+			}
+			/* Extra small devices (phones, 600px and down) */
+			@media only screen and (max-width: 600px) {
+  			#header {
+  				font-size: 30pt;
+  				padding: 10px;
+  			}
+  			p.question {
+  				font-size: 17pt;
+  			}
+  			button.risk {
+  				font-size: 15pt;
+  				border-radius: 15px;
+  				padding: 10px;
+  			}
+			}
+			/* Large devices (laptops/desktops, 992px and up) */
+			@media only screen and (min-width: 992px) {
+  			#content {
+  				width: 500px; 
+  				margin: auto;
+  				padding: 0;
+  			}
+  			#header {
+  				font-size: 30pt;
+  				padding: 10px;
+  			}
+  			p.question {
+  				font-size: 17pt;
+  			}
+  			button.risk {
+  				font-size: 15pt;
+  				border-radius: 15px;
+  				padding: 10px;
+  			}
+			} 
+		</style>
+	</head>
+	<body>
+		<div id="header">Caries Risk Assessment</div>
+		<div id="content">
+			<p class="question">
+				<a id="back">< Back</a>
+				<span id="qno">This app allows dentists to quickly and accurately risk assess patients for dental caries.</span>
+				<a id="restart">Restart</a>
+				<br /><br />
+				<span id="q">Press the 'start' button below to begin the assessment.</span>
+			</p>
+			<button class="risk" id="start">Start</button>
+			<button class="risk" id="low"></button>
+			<button class="risk" id="med"></button>
+			<button class="risk" id="hi"></button>
+		</div>
+		<script>
+			var pg = 0; // page number
+			var results = []; // results array
+			
+			document.getElementById("back").addEventListener("click", backbtn);
+			function backbtn() {
+				pg = pg - 1;
+				showPage();
+				results.pop();
+				console.log(results);
+			}
+			
+			document.getElementById("restart").addEventListener("click", restartbtn);
+			function restartbtn() {
+				pg = 0;
+				showPage();
+				results = [];
+				console.log(results);
+			}
+			
+			document.getElementById("start").addEventListener("click", startbtn);
+			function startbtn() {
+				document.getElementById("start").style.display = "none";
+				pg = 1;
+				showPage();
+				document.getElementById("back").style.display = "block";
+				document.getElementById("restart").style.display = "block";
+			}
+			
+			document.getElementById("low").addEventListener("click", clickLow);
+			function clickLow() { 
+				pg = pg + 1;
+				results.push("l");
+				console.log(results);
+				showPage();
+			}
+			
+			document.getElementById("med").addEventListener("click", clickMed);
+			function clickMed() { 
+				pg = pg + 1;
+				results.push("m");
+				console.log(results);
+				showPage();
+			}
+			
+			document.getElementById("hi").addEventListener("click", clickHi);
+			function clickHi() { 
+				pg = pg + 1;
+				results.push("h");
+				console.log(results);
+				showPage();
+			}
+			
+			function showPage() {
+				if (pg == 0) {
+					document.getElementById("back").style.display = "none";
+					document.getElementById("qno").innerHTML = "This app allows dentists to quickly and accurately risk assess patients for dental caries.";
+					document.getElementById("restart").style.display = "none";
+					document.getElementById("q").innerHTML = "Press the 'start' button below to begin the assessment.";
+					document.getElementById("low").style.display = "none";
+					document.getElementById("med").style.display = "none";
+					document.getElementById("hi").style.display = "none";
+					document.getElementById("start").style.display = "block";
+				}
+				if (pg == 1) {
+					page(
+						"<b>Fluoride exposure</b> (through drinking water, supplements, professional applications, toothpaste)", 
+						"Yes", "No", null
+					);
+				} else if (pg == 2) {
+					page(
+						"<b>Sugary foods or drinks</b> (including juice, carbonated or non-carbonated soft drinks, energy drinks, medicinal syrups)",
+						"Primarily at mealtimes", null, "Frequent or prolonged exposure between meals"
+					);
+				} else if (pg == 3) {
+					page(
+						"<b>Caries experience of caregiver and/or other siblings</b> (for patients ages 6&ndash;14)",
+						"No carious lesions in last 24 months", "Carious lesions in last 7&ndash;23 months", "Carious lesions in last 6 months"
+					);
+				} else if (pg == 4) {
+					page(
+						"<b>Dental home:</b> established patient of record, receiving regular dental care in a dental practice",
+						"Yes", "No", null
+					);
+				} else if (pg == 5) {
+					page(
+						"<b>Special healthcare needs</b> (developmental, physical, medical or mental disabilities that prevent or limit performance of adequate oral health care by themselves or caregivers)",
+						"No", "Yes (over age 14)", "Yes (ages 6&ndash;14)"
+					);
+				} else if (pg == 6) {
+					page(
+						"<b>Chemo- or radio-therapy</b>",
+						"No", null, "Yes"
+					);
+				} else if (pg == 7) {
+					page(
+						"<b>Eating disorders</b>",
+						"No", "Yes", null
+					);
+				} else if (pg == 8) {
+					page(
+						"<b>Medications that reduce salivary flow</b>",
+						"No", "Yes", null
+					);
+				} else if (pg == 9) {
+					page(
+						"<b>Drug or alcohol abuse</b>",
+						"No", "Yes", null
+					);
+				} else if (pg == 10) {
+					page(
+						"<b>Cavitated or non-cavitated carious lesions or restorations</b> (visually or radiographically evident)",
+						"No new carious lesions or restorations in last 36 months", "1&ndash;2 new carious lesions or restorations in last 36 months", "3 or more carious lesions or restorations in last 36 months"
+					);
+				} else if (pg == 11) {
+					page(
+						"<b>Teeth extracted due to caries</b> in past 36 months",
+						"No", null, "Yes"
+					);
+				} else if (pg == 12) {
+					page(
+						"<b>Visible plaque</b>",
+						"No", "Yes", null
+					);
+				} else if (pg == 13) {
+					page(
+						"<b>Unusual tooth morphology</b> that compromises oral hygiene",
+						"No", "Yes", null
+					);
+				} else if (pg == 14) {
+					page(
+						"<b>Interproximal restorations</b> (1 or more)",
+						"No", "Yes", null
+					);
+				} else if (pg == 15) {
+					page(
+						"<b>Exposed root surfaces</b> present",
+						"No", "Yes", null
+					);
+				} else if (pg == 16) {
+					page(
+						"<b>Restorations with overhangs</b> and/or <b>open margins</b>; <b>open contacts</b> with food impaction",
+						"No", "Yes", null
+					);
+				} else if (pg == 17) {
+					page(
+						"<b>Dental/orthodontic appliances</b> (fixed or removable)",
+						"No", "Yes", null
+					);
+				} else if (pg == 18) {
+					page(
+						"<b>Severe dry mouth (xerostomia)</b>",
+						"No", null, "Yes"
+					);
+				} else if (pg == 19) {
+					var i, rLen, riskCat;
+					var rLow = 0;
+					var rMed = 0;
+					var rHi = 0;
+					rLen = results.length;
+					for (i = 0; i < rLen; i++) {
+						if (results[i] == "l") {
+							rLow = rLow + 1;
+						} else if (results[i] == "m") {
+							rMed = rMed + 1;
+						} else {
+							rHi = rHi + 1;
+						}
+					}
+					console.log(rLow, rMed, rHi);
+					var riskColor;
+					if (rHi > 0) {
+						riskCat = "High";
+						riskColor = "#e44024";
+					} else if (rMed > 0) {
+						riskCat = "Medium";
+						riskColor = "#ffb81c";
+					} else {
+						riskCat = "Low";
+						riskColor = "#78be20";
+					}
+					console.log("Risk: " + riskCat);
+					document.getElementById("qno").innerHTML = "";
+					document.getElementById("q").innerHTML = "Your risk category is:<br /><br /><span id='riskResult' style='color: " + riskColor + ";'>" + riskCat + "</span>";
+					document.getElementById("low").style.display = "none";
+					document.getElementById("med").style.display = "none";
+					document.getElementById("hi").style.display = "none";
+				}
+			}
+
+			function page(q, l, m, h) {
+				document.getElementById("qno").innerHTML = pg + "/18";
+				document.getElementById("q").innerHTML = q;
+	
+				var low = document.getElementById("low");
+				if (l != null) {
+					low.style.display = "block";
+					low.innerHTML = l;
+				} else {
+					low.style.display = "none";
+				}
+	
+				var med = document.getElementById("med");
+				if (m != null) {
+					med.style.display = "block";
+					med.innerHTML = m;
+				} else {
+					med.style.display = "none";
+				}
+	
+				var hi = document.getElementById("hi");
+				if (h != null) {
+					hi.style.display = "block";
+					hi.innerHTML = h;
+				} else {
+					hi.style.display = "none";
+				}
+			}	
+		</script>
+	</body>
+</html>
