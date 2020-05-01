@@ -231,6 +231,9 @@
 				showPage();
 				results.pop();
 				//console.log(results);
+				if (document.getElementById("pdfBox").style.display != "none") {
+					document.getElementById("pdfBox").style.display = "none";
+				}
 			});
 			
 			document.getElementById("restart").addEventListener("click", function() {
@@ -238,6 +241,9 @@
 				showPage();
 				results = [];
 				//console.log(results);
+				if (document.getElementById("pdfBox").style.display != "none") {
+					document.getElementById("pdfBox").style.display = "none";
+				}
 			});
 			
 			document.getElementById("start").addEventListener("click", function() {
@@ -279,6 +285,7 @@
 					document.getElementById("med").style.display = "none";
 					document.getElementById("hi").style.display = "none";
 					document.getElementById("start").style.display = "block";
+					document.getElementById("pdfBox").style.display = "none";
 				}
 				if (pg == 1) {
 					page(
@@ -385,7 +392,7 @@
 							rHi = rHi + 1;
 						}
 					}
-					console.log(rLow, rMed, rHi);
+					//console.log(rLow, rMed, rHi);
 					if (rHi > 0) {
 						riskCat = "High";
 						riskColor = "#e44024";
@@ -399,7 +406,7 @@
 						riskColor = "#78be20";
 						riskStyle = "low";
 					}
-					console.log("Risk: " + riskCat);
+					//console.log("Risk: " + riskCat);
 					document.getElementById("qno").innerHTML = "";
 					document.getElementById("q").innerHTML = "Overall assessment of dental caries risk:<br /><br /><span id='riskResult' style='color: " + riskColor + ";'>" + riskCat + "</span>";
 					document.getElementById("low").style.display = "none";
@@ -441,6 +448,7 @@
 				var pName = document.getElementById("myForm").elements.namedItem("pName").value;
 				var pBirth = document.getElementById("myForm").elements.namedItem("pBirth").value;
 				var cName = document.getElementById("myForm").elements.namedItem("cName").value;
+				var docName = 'CRA ' + pName + ' ' + date();
 				function date() {
 					var d = new Date();
 					var y = d.getFullYear();
@@ -469,6 +477,11 @@
 					}
 				}		
 				var docDefinition = {
+					info: {
+						title: docName,
+						creator: 'bocaj130.github.io/caries-risk-assessment',
+						producer: 'bocaj130.github.io/caries-risk-assessment'
+					},
 					content: [
 						{text: 'Caries Risk Assessment', style: 'title', alignment: 'center'},
 						{
@@ -714,7 +727,7 @@
 						columnGap: 0
 					}
 				};
-				pdfMake.createPdf(docDefinition).download('CRA ' + pName + ' ' + date());
+				pdfMake.createPdf(docDefinition).download(docName);
 			});
 		</script>
 	</body>
