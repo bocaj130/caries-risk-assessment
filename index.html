@@ -6,7 +6,7 @@
 		<meta charset='utf-8'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 		<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- Hide safari UI -->
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> <!-- Minimise iOS status bar -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" /> <!-- Minimise iOS status bar -->
 		<meta name="apple-mobile-web-app-title" content="Caries Risk" /> <!-- iOS launch icon title -->
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<!--- To specify an icon for the entire website (every page on the website), place an icon file in PNG format in the root document folder called apple-touch-icon.png -->
@@ -54,22 +54,11 @@
 				top: 0;
 				left: 0;
 			}
-			@supports (-webkit-touch-callout: none) {
-				/* CSS specific to iOS devices */ 
-				body:before {
-					display: block;
-					content: " ";
-					height: 20px;
-					top: -20px;
-					background: #005eb8;
-					position: -webkit-sticky;
-					position: fixed;
-				}
-			}
 			#content {
 				width: 100%;
 				padding: 0 10% 10% 10%;
 				box-sizing: border-box;
+				background-color: #e8edee;
 			}
 			p.question {
 				font-size: 17pt;
