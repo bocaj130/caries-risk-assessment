@@ -1,0 +1,180 @@
+@font-face {
+    font-family: Frutiger;
+    src: url(Frutiger_LT_Std_55_Roman_Regular.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Frutiger;
+    src: url(FrutigerLTStd-Bold.otf);
+    font-weight: bold;
+}
+body {
+    font-family: Helvetica, Arial;
+    background-color: #e8edee;
+    padding: 0;
+    margin: 0;
+    color: #231f20;
+}
+#header {
+    width: 100%;
+    font-size: 30pt;
+    background-color: #005eb8;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+}
+#content {
+    width: 100%;
+    padding: 0 10% 10% 10%;
+    box-sizing: border-box;
+    background-color: #e8edee;
+}
+p.question {
+    font-size: 17pt;
+    color: #231f20;
+    text-align: center;
+}
+button.risk {
+    width: 100%;
+    margin: 5% 0 5% 0;
+    padding: 10px;
+    font-size: 15pt;
+    border-radius: 15px;
+    border: none;
+    font-family: Helvetica, Arial;
+    /*transition: 0.2s;*/
+    /*transition-property: background-color;*/
+    outline: 0;
+    box-shadow: 0 5px #425563;
+    cursor: pointer;
+    position: relative;
+}
+button:hover {
+    top: 5px;
+    box-shadow: none;
+}
+#low {
+    background-color: #aed87f;
+    display: none;
+}
+#med {
+    background-color: #ffd581;
+    display: none;
+}
+#hi {
+    background-color: #ef8c7f;
+    display: none;
+}
+#start {
+    background-color: #6c9fd5;
+    color: #fff;
+}
+#pdfBtn {
+    background-color: #6c9fd5;
+    color: #fff;
+    float: right;
+    width: auto;
+    margin: 0 0 5px 0;
+}
+/*#low:active {
+    background-color: #78be20;
+}
+#med:active {
+    background-color: #ffb81c;
+}
+#hi:active {
+    background-color: #e44024;
+}*/
+a {
+    color: #005eb8;
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+#back {
+    float: left;
+    display: none;
+}
+#restart {
+    float: right;
+    display: none;
+}
+#riskResult {
+    font-size: 23pt;
+    color: #231f20;
+}
+#pdfForm {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 17pt;
+    overflow: auto;
+    font-family: Helvetica, Arial;
+}
+#pdfBox {
+    display: none;
+    margin: 30px 0 0 0;
+}
+#pdfHeader {
+    font-size: 17pt;
+    padding: 10px 15px 10px 15px;
+    background-color: #005eb8;
+    color: #ffffff;
+}
+#pdfForm input {
+    width: 100%;
+    border: 0;
+    background-color: #e8edee;
+    font-size: 17pt;
+    margin: 0 0 10px 0;
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial;
+    outline: 0;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #header {
+        font-size: 8vw;
+        padding: 10px;
+    }
+    p.question {
+        font-size: 17pt;
+    }
+    button.risk {
+        font-size: 15pt;
+        border-radius: 15px;
+        padding: 10px;
+    }
+    button:hover {
+        top: 0;
+        box-shadow: 0 5px #425563;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #content {
+        width: 500px; 
+        margin: auto;
+        padding: 0;
+    }
+    #header {
+        font-size: 30pt;
+        padding: 10px;
+    }
+    p.question {
+        font-size: 17pt;
+    }
+    button.risk {
+        font-size: 15pt;
+        border-radius: 15px;
+        padding: 10px;
+    }
+} 
