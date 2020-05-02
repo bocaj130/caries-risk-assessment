@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- Hide safari UI -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="black"> <!-- Minimise iOS status bar -->
-	<meta name="apple-mobile-web-app-title" content="Caries Risk"> <!-- iOS launch icon title -->
-	<link rel="apple-touch-startup-image" href=""> <!-- iOS launch screen image -->
-	<!--- To specify an icon for the entire website (every page on the website), place an icon file in PNG format in the root document folder called apple-touch-icon.png -->
-	<!-- https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
 	<head>
+		<title>Caries Risk Assessment</title>
+		<link rel="shortcut icon" href="favicon.ico">
 		<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- Hide safari UI -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" /> <!-- Minimise iOS status bar -->
+		<meta name="apple-mobile-web-app-title" content="Caries Risk" /> <!-- iOS launch icon title -->
+		<!-- <link rel="apple-touch-startup-image" href=""> <!-- iOS launch screen image -->
+		<!--- To specify an icon for the entire website (every page on the website), place an icon file in PNG format in the root document folder called apple-touch-icon.png -->
+		<!-- https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
 		<script src='pdfmake/build/pdfmake.min.js'></script>
 		<script src='pdfmake/build/vfs_fonts.js'></script>
 		<style>
@@ -23,7 +25,7 @@
   			font-weight: bold;
 			}
 			body {
-				font-family: Frutiger, Arial;
+				font-family: Helvetica, Arial;
 				background-color: #e8edee;
 				padding: 0;
 				margin: 0;
@@ -58,7 +60,7 @@
 				font-size: 15pt;
 				border-radius: 15px;
 				border: none;
-				font-family: Frutiger, Arial;
+				font-family: Helvetica, Arial;
 				/*transition: 0.2s;*/
 				/*transition-property: background-color;*/
 				outline: 0;
@@ -129,7 +131,7 @@
 				box-sizing: border-box;
 				font-size: 17pt;
 				overflow: auto;
-				font-family: Frutiger, Arial;
+				font-family: Helvetica, Arial;
 			}
 			#pdfBox {
 				display: none;
@@ -137,7 +139,7 @@
 			}
 			#pdfHeader {
 				font-size: 17pt;
-				padding: 10px 15px 4px 15px;
+				padding: 10px 15px 10px 15px;
 				background-color: #005eb8;
 				color: #ffffff;
 			}
@@ -149,13 +151,13 @@
 				margin: 0 0 10px 0;
 				padding: 5px;
 				box-sizing: border-box;
-				font-family: Frutiger, Arial;
+				font-family: Helvetica, Arial;
 				outline: 0;
 			}
 			/* Extra small devices (phones, 600px and down) */
 			@media only screen and (max-width: 600px) {
 				#header {
-					font-size: 25pt;
+					font-size: 8vw;
 					padding: 10px;
 				}
 				p.question {
